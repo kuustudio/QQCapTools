@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="头文件\LSPCommon">
+      <UniqueIdentifier>{7b8375c7-40e7-4cc7-9e47-91bc10d06016}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="LSPCommon\atalkwsh.h">
+      <Filter>头文件\LSPCommon</Filter>
+    </ClInclude>
+    <ClInclude Include="LSPCommon\lspcommon.h">
+      <Filter>头文件\LSPCommon</Filter>
+    </ClInclude>
+    <ClInclude Include="cARPStream.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="cConnection.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="cConStream.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="cDNSStream.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="cFile.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="cHash.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="cHTTPStream.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="cICMPStream.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="cLSP.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="cLSPInstall.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="cPacket.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="cPacketGen.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="cPcapFile.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="cString.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="cTCPReassembler.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="cTCPStream.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="cTraffic.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="cUDPStream.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="cWinpcapCapture.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="cWinpcapSend.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="hPackets.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Packetyzer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Packetyzer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LSPCommon\provider.cpp">
+      <Filter>头文件\LSPCommon</Filter>
+    </ClCompile>
+    <ClCompile Include="cARPStream.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="cConnection.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="cConStream.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="cDNSStream.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="cFile.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="cHash.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="cHTTPStream.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="cICMPStream.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="cLSP.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="cLSPInstall.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="cPacket.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="cPacketGen.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="cPcapFile.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="cString.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="cTCPReassembler.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="cTCPStream.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="cTraffic.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="cUDPStream.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="cWinpcapCapture.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="cWinpcapSend.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

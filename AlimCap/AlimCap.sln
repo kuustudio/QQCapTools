@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AlimCap", "AlimCap\AlimCap.vcxproj", "{4933200B-A879-4A3A-9EC7-850EDD98EDF7}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Packetyzer", "Packetyzer\Packetyzer.vcxproj", "{4B6A4690-5458-412D-8E03-C94F650B233B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4933200B-A879-4A3A-9EC7-850EDD98EDF7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4933200B-A879-4A3A-9EC7-850EDD98EDF7}.Debug|Win32.Build.0 = Debug|Win32
+		{4933200B-A879-4A3A-9EC7-850EDD98EDF7}.Release|Win32.ActiveCfg = Release|Win32
+		{4933200B-A879-4A3A-9EC7-850EDD98EDF7}.Release|Win32.Build.0 = Release|Win32
+		{4B6A4690-5458-412D-8E03-C94F650B233B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4B6A4690-5458-412D-8E03-C94F650B233B}.Debug|Win32.Build.0 = Debug|Win32
+		{4B6A4690-5458-412D-8E03-C94F650B233B}.Release|Win32.ActiveCfg = Release|Win32
+		{4B6A4690-5458-412D-8E03-C94F650B233B}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

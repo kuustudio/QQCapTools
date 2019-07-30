@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="加密">
+      <UniqueIdentifier>{bc82b612-272c-442b-8c79-e2617ed6b296}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="xml">
+      <UniqueIdentifier>{e8442ad9-15d9-4072-9963-905b9592ce44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="QQ">
+      <UniqueIdentifier>{9bfb0f43-ee70-4a1a-941b-7305b5b5c6d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="log">
+      <UniqueIdentifier>{586fcf3d-0b9c-46d7-911f-8bba6645e883}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+    <None Include="res\AlimCap.rc2">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\AlimCap.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="说明.txt">
+      <Filter>资源文件</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AlimCap.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="AlimCapDlg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MyEditBrowseCtrl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MyListCtrl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="TeaCrypt.h">
+      <Filter>加密</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogDec.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogPwd.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Markup.h">
+      <Filter>xml</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogSniffer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogMsg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="mymsg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="QQSendPack.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ScanMemKeyDialog.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="packet.h">
+      <Filter>QQ</Filter>
+    </ClInclude>
+    <ClInclude Include="UserInfo.h">
+      <Filter>QQ</Filter>
+    </ClInclude>
+    <ClInclude Include="Sessions.h">
+      <Filter>QQ</Filter>
+    </ClInclude>
+    <ClInclude Include="ByteBuffer.h">
+      <Filter>QQ</Filter>
+    </ClInclude>
+    <ClInclude Include="SyncPackets.h">
+      <Filter>QQ</Filter>
+    </ClInclude>
+    <ClInclude Include="SyncPacketElement.h">
+      <Filter>QQ</Filter>
+    </ClInclude>
+    <ClInclude Include="SnifferInfo.h">
+      <Filter>QQ</Filter>
+    </ClInclude>
+    <ClInclude Include="CachePackets.h">
+      <Filter>QQ</Filter>
+    </ClInclude>
+    <ClInclude Include="NetInfo.h">
+      <Filter>QQ</Filter>
+    </ClInclude>
+    <ClInclude Include="SendMsg.h">
+      <Filter>QQ</Filter>
+    </ClInclude>
+    <ClInclude Include="AnalysisCap.h">
+      <Filter>QQ</Filter>
+    </ClInclude>
+    <ClInclude Include="SessionElement.h">
+      <Filter>QQ</Filter>
+    </ClInclude>
+    <ClInclude Include="PCUserInfo.h">
+      <Filter>QQ</Filter>
+    </ClInclude>
+    <ClInclude Include="AndroidUserInfo.h">
+      <Filter>QQ</Filter>
+    </ClInclude>
+    <ClInclude Include="IosUserInfo.h">
+      <Filter>QQ</Filter>
+    </ClInclude>
+    <ClInclude Include="FilterInfo.h">
+      <Filter>QQ</Filter>
+    </ClInclude>
+    <ClInclude Include="IdKeys.h">
+      <Filter>QQ</Filter>
+    </ClInclude>
+    <ClInclude Include="logger.h">
+      <Filter>log</Filter>
+    </ClInclude>
+    <ClInclude Include="HexControlInclude.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AlimCap.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="AlimCapDlg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MyEditBrowseCtrl.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MyListCtrl.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="TeaCrypt.cpp">
+      <Filter>加密</Filter>
+    </ClCompile>
+    <ClCompile Include="HexEdit.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogDec.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogPwd.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Markup.cpp">
+      <Filter>xml</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogSniffer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogMsg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="QQSendPack.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ScanMemKeyDialog.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="AnalysisCap.cpp">
+      <Filter>QQ</Filter>
+    </ClCompile>
+    <ClCompile Include="logger.cpp">
+      <Filter>log</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="AlimCap.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

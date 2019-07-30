@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<config>
+<users>
+	<user id="2799044801" type="1">
+<pwdhash>F8B9A22AF2E49F29C6C15D8823278184</pwdhash>
+<ShareKey>4DA0F614FC9F29C2054C77048A6566D7</ShareKey>
+<SessionKey>4DA0F614FC9F29C2054C77048A6566D7</SessionKey>
+</user>
+<user id="3129936221" type="0">
+<pwdhash>2AD2B78B093A60865DDF2A690E5AB994</pwdhash>
+<ShareKey>8C69D7E659252E6EA79D7193DD815B8E</ShareKey>
+<SessionKey>4DA0F614FC9F29C2054C77048A6566D7</SessionKey>
+</user>
+<user id="543340997" type="1">
+<pwdhash>FB1CFB99A47625171ECDD16A743736B4</pwdhash>
+<ShareKey>4DA0F614FC9F29C2054C77048A6566D7</ShareKey>
+<SessionKey>4D5E68443758694D626B547437623D63</SessionKey>
+</user>
+<user id="2799044801" type="0">
+<pwdhash>F8B9A22AF2E49F29C6C15D8823278184</pwdhash>
+<ShareKey>8C69D7E659252E6EA79D7193DD815B8E</ShareKey>
+<SessionKey>4DA0F614FC9F29C2054C77048A6566D7</SessionKey>
+</user>
+</users>
+<ECDH>
+	<ShareKeys>
+		<type>0</type>
+		<ver>8.9.6</ver>
+		<key>8C69D7E659252E6EA79D7193DD815B8E</key>
+	</ShareKeys>
+	<ShareKeys>
+		<type>0</type>
+		<ver>8.9.5</ver>
+		<key>8C69D7E659252E6EA79D7193DD815B8E</key>
+	</ShareKeys>
+	<ShareKeys>
+		<type>1</type>
+		<ver>7.1.8</ver>
+		<key>4da0f614fc9f29c2054c77048a6566d7</key>
+	</ShareKeys>
+	<ShareKeys>
+		<type>2</type>
+		<ver>7.1.8</ver>
+		<key>4da0f614fc9f29c2054c77048a6566d7</key>
+	</ShareKeys>
+</ECDH>
+</config>
