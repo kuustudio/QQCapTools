@@ -6,6 +6,7 @@
 #include"mymsg.h"
 #include"QQSendPack.h"
 #include"SendMsg.h"
+#include"AlimCapDlg.h"
 
 
 // CDialogMsg ¶Ô»°¿ò
@@ -120,4 +121,10 @@ void CDialogMsg::OnBnClickedButton2()
 	mDstMac = _mSrcMac;
 	mDstPort = _mSrcPort;
 	this->UpdateData(FALSE);
+}
+
+CAnalysisCap* CDialogMsg::GetCACap()
+{
+	CAlimCapDlg *pMainDlg = static_cast<CAlimCapDlg*>(AfxGetMainWnd());
+	return &pMainDlg->CACap;
 }

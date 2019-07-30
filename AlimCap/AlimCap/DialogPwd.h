@@ -4,6 +4,7 @@
 #include<afxdialogex.h>
 #include "afxwin.h"
 #include "afxcmn.h"
+#include"AnalysisCap.h"
 
 
 // CDialogPwd ¶Ô»°¿ò
@@ -43,5 +44,5 @@ public:
 public:
 	void InitListData();
 	void SetRefreshList();
-	CAnalysisCap* GetCACap(){ return &(((CAlimCapApp*)AfxGetApp())->CACap); };
+	CAnalysisCap* GetCACap();
 };

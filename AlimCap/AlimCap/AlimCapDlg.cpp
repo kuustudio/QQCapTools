@@ -156,7 +156,7 @@ BOOL CAlimCapDlg::OnInitDialog()
 
 	AfxOleInit();
 	// TODO: 在此添加额外的初始化代码
-	if (!GetCACap()->Init("test"))
+	if (!CACap.Init("test"))
 	{
 		AfxMessageBox("初始化失败");
 		return TRUE;
@@ -185,7 +185,7 @@ BOOL CAlimCapDlg::OnInitDialog()
 	((CButton*)GetDlgItem(IDC_CHECK3))->SetCheck(1);
 	((CButton*)GetDlgItem(IDC_CHECK4))->SetCheck(1);
 
-	mCapFile = "C:\\Users\\Administrator\\Desktop\\QQ\\1.pcap";
+	mCapFile = "C:\\Users\\Administrator\\Desktop\\QQ.pcap";
 	this->UpdateData(FALSE);
 
 	CRect rect;
@@ -251,9 +251,9 @@ void CAlimCapDlg::OnBnClickedMfcbutton2()
 	UpdateData(TRUE);
 	if (((CButton*)GetDlgItem(IDC_CHECK6))->GetCheck())
 	{
-		GetCACap()->SetReport(true);
+		CACap.SetReport(true);
 	}else
-		GetCACap()->SetReport(false);
+		CACap.SetReport(false);
 
 	GetFilterInfo();
 	ClearControl();
@@ -263,21 +263,21 @@ void CAlimCapDlg::OnBnClickedMfcbutton2()
 		return;
 	}
 	pcap_t *fp = NULL;
-	if (!(fp = GetCACap()->CapOpen(mCapFile)))
+	if (!(fp = CACap.CapOpen(mCapFile)))
 	{
 		AfxMessageBox("Cap文件错误!");
 		return;
 	}
-	//GetCACap()->SetFilter(fp, "tcp || udp");
+	//CACap.SetFilter(fp, "tcp || udp");
 	//解密SessionKey
-	if (GetCACap()->mSessions.GetClientType() == ClientEnum::Enum_PC)
+	if (CACap.mSessions.GetClientType() == ClientEnum::Enum_PC)
 	{
-		if (GetCACap()->ScanPCCap(fp))
+		if (CACap.ScanPCCap(fp))
 		{
-			GetCACap()->AnalysisPCPacket(GetCACap()->mSessions.mCachePackets, GetCACap()->mSessions);
+			CACap.AnalysisPCPacket(CACap.mSessions.mCachePackets, CACap.mSessions);
 			//加载sessions
 			std::list<CSessionElement>::iterator vtor;
-			for (vtor = GetCACap()->mSessions.mSessions.begin(); vtor != GetCACap()->mSessions.mSessions.end(); vtor++)
+			for (vtor = CACap.mSessions.mSessions.begin(); vtor != CACap.mSessions.mSessions.end(); vtor++)
 			{
 				unsigned int _uuid=vtor->Getuuid();
 				CString strSessionId = "";
@@ -292,12 +292,12 @@ void CAlimCapDlg::OnBnClickedMfcbutton2()
 	}
 	else
 	{
-		if (GetCACap()->ScanCapMobile(fp))
+		if (CACap.ScanCapMobile(fp))
 		{
-			GetCACap()->AnalysisMBPacket(GetCACap()->mSessions.mCachePackets, GetCACap()->mSessions);
+			CACap.AnalysisMBPacket(CACap.mSessions.mCachePackets, CACap.mSessions);
 			//加载sessions
 			std::list<CSessionElement>::iterator vtor;
-			for (vtor = GetCACap()->mSessions.mSessions.begin(); vtor != GetCACap()->mSessions.mSessions.end(); vtor++)
+			for (vtor = CACap.mSessions.mSessions.begin(); vtor != CACap.mSessions.mSessions.end(); vtor++)
 			{
 				unsigned int _uuid = vtor->Getuuid();
 				CString strSessionId = "";
@@ -310,7 +310,7 @@ void CAlimCapDlg::OnBnClickedMfcbutton2()
 			OnSessionSelchange();
 		}
 	}
-	GetCACap()->CapClose(fp);
+	CACap.CapClose(fp);
 	UpdateData(FALSE);
 }
 
@@ -326,7 +326,7 @@ BOOL CAlimCapDlg::OnCopyData(CWnd* pWnd, COPYDATASTRUCT* pCopyDataStruct)
 			//更新edit
 			unsigned int uuid = cbSessions.GetItemData(cbSessions.GetCurSel());
 
-			const CSessionElement *pCurSession = GetCACap()->mSessions.FindSession(uuid);
+			const CSessionElement *pCurSession = CACap.mSessions.FindSession(uuid);
 			if (NULL == pCurSession)
 				break;
 			unsigned int *num = (unsigned int *)pCopyDataStruct->lpData;
@@ -341,7 +341,7 @@ BOOL CAlimCapDlg::OnCopyData(CWnd* pWnd, COPYDATASTRUCT* pCopyDataStruct)
 				if (((CButton*)GetDlgItem(IDC_CHECK5))->GetCheck())
 				{
 					UpdateData(TRUE);
-					std::string strHex = GetCACap()->StrToHex((BYTE*)mSessionKey.GetBuffer(0), mSessionKey.GetLength());
+					std::string strHex = CACap.StrToHex((BYTE*)mSessionKey.GetBuffer(0), mSessionKey.GetLength());
 					memcpy(mSessionKey0.SessionKey, strHex.c_str(), sizeof(mSessionKey0.SessionKey));
 				}
 				else
@@ -350,7 +350,7 @@ BOOL CAlimCapDlg::OnCopyData(CWnd* pWnd, COPYDATASTRUCT* pCopyDataStruct)
 					{
 						mSessionKey0 = pCurSession->pUserInfo->KeysUinion.find(vtor->id)->second;
 					}
-					std::string strSTR = GetCACap()->HexToStr(mSessionKey0.SessionKey, sizeof(mSessionKey0.SessionKey));
+					std::string strSTR = CACap.HexToStr(mSessionKey0.SessionKey, sizeof(mSessionKey0.SessionKey));
 					mSessionKey.SetString(strSTR.c_str(), strSTR.length());
 					UpdateData(FALSE);
 				}
@@ -363,7 +363,7 @@ BOOL CAlimCapDlg::OnCopyData(CWnd* pWnd, COPYDATASTRUCT* pCopyDataStruct)
 					{
 						unsigned char *dst = NULL;
 						unsigned int bytes = 0;
-						GetCACap()->unEncrypt((unsigned char*)vtor->_payload.contents() + vtor->ciphertextoffset, vtor->ciphertextlen, mSessionKey0.SessionKey, &dst, &bytes);
+						CACap.unEncrypt((unsigned char*)vtor->_payload.contents() + vtor->ciphertextoffset, vtor->ciphertextlen, mSessionKey0.SessionKey, &dst, &bytes);
 						HexEditControl::SetData(mHexEditText, dst, bytes);
 						free(dst);
 						dst = NULL;
@@ -372,7 +372,7 @@ BOOL CAlimCapDlg::OnCopyData(CWnd* pWnd, COPYDATASTRUCT* pCopyDataStruct)
 					{
 						unsigned char *dst = NULL;
 						unsigned int bytes = 0;
-						GetCACap()->unEncrypt((unsigned char*)vtor->_payload.contents() + vtor->ciphertextoffset, vtor->ciphertextlen, pCurSession->pUserInfo->Key0, &dst, &bytes);
+						CACap.unEncrypt((unsigned char*)vtor->_payload.contents() + vtor->ciphertextoffset, vtor->ciphertextlen, pCurSession->pUserInfo->Key0, &dst, &bytes);
 						HexEditControl::SetData(mHexEditText, dst, bytes);
 						free(dst);
 						dst = NULL;
@@ -390,7 +390,7 @@ BOOL CAlimCapDlg::OnCopyData(CWnd* pWnd, COPYDATASTRUCT* pCopyDataStruct)
 				{
 					unsigned char *dst = NULL;
 					unsigned int bytes = 0;
-					GetCACap()->unEncrypt((unsigned char*)vtor->_payload.contents() + vtor->ciphertextoffset, vtor->ciphertextlen, mSessionKey0.SessionKey, &dst, &bytes);
+					CACap.unEncrypt((unsigned char*)vtor->_payload.contents() + vtor->ciphertextoffset, vtor->ciphertextlen, mSessionKey0.SessionKey, &dst, &bytes);
 					HexEditControl::SetData(mHexEditText, dst, bytes);
 					free(dst);
 					dst = NULL;
@@ -415,7 +415,7 @@ BOOL CAlimCapDlg::OnCopyData(CWnd* pWnd, COPYDATASTRUCT* pCopyDataStruct)
 			if (pSend->pMsgDialog == NULL) break;
 
 			unsigned int uuid = cbSessions.GetItemData(cbSessions.GetCurSel());
-			const CSessionElement *pCurSession = GetCACap()->mSessions.FindSession(uuid);
+			const CSessionElement *pCurSession = CACap.mSessions.FindSession(uuid);
 			if (NULL == pCurSession)
 				break;
 			pSend->mNetInfo = pCurSession->mPackets.mNetInfo;
@@ -432,7 +432,7 @@ BOOL CAlimCapDlg::OnCopyData(CWnd* pWnd, COPYDATASTRUCT* pCopyDataStruct)
 		case WM_DECRYPTSAVE_PARENT:
 		{
 			unsigned int uuid = cbSessions.GetItemData(cbSessions.GetCurSel());
-			const CSessionElement *pCurSession = GetCACap()->mSessions.FindSession(uuid);
+			const CSessionElement *pCurSession = CACap.mSessions.FindSession(uuid);
 			if (NULL == pCurSession)
 				break;
 			std::list<CSyncPacketElement>::const_iterator vtor = pCurSession->mPackets.mPackets.begin();
@@ -444,7 +444,7 @@ BOOL CAlimCapDlg::OnCopyData(CWnd* pWnd, COPYDATASTRUCT* pCopyDataStruct)
 				if (pCurSession->pUserInfo->KeysUinion.find(vtor->id) != pCurSession->pUserInfo->KeysUinion.end())
 					mKey = pCurSession->pUserInfo->KeysUinion.find(vtor->id)->second;
 
-				GetCACap()->unEncrypt((unsigned char*)(vtor->_payload.contents() + vtor->ciphertextoffset), vtor->ciphertextlen, mKey.SessionKey, &dst, &bytes);
+				CACap.unEncrypt((unsigned char*)(vtor->_payload.contents() + vtor->ciphertextoffset), vtor->ciphertextlen, mKey.SessionKey, &dst, &bytes);
 				free(dst);
 				dst = NULL;
 			}
@@ -455,7 +455,7 @@ BOOL CAlimCapDlg::OnCopyData(CWnd* pWnd, COPYDATASTRUCT* pCopyDataStruct)
 
 void CAlimCapDlg::ClearControl()
 {
-	GetCACap()->ReleaseSession();
+	CACap.ReleaseSession();
 	//devCBbox.ResetContent();
 	cbSessions.ResetContent();
 	mSessionKey="";
@@ -498,15 +498,15 @@ bool CAlimCapDlg::GetLocalPwdHash()
 		xml.IntoElem();
 		unsigned int id = strtoll(strId.c_str(),0,10);
 		std::string strpwd = xml.GetData();
-		strpwd = GetCACap()->StrToHex((BYTE*)strpwd.c_str(), strpwd.size());
+		strpwd = CACap.StrToHex((BYTE*)strpwd.c_str(), strpwd.size());
 
 		xml.FindElem("ShareKey");
 		std::string strsharekey = xml.GetData();
-		strsharekey = GetCACap()->StrToHex((BYTE*)strsharekey.c_str(), strsharekey.size());
+		strsharekey = CACap.StrToHex((BYTE*)strsharekey.c_str(), strsharekey.size());
 
 		xml.FindElem("SessionKey");
 		std::string strsessionkey = xml.GetData();
-		strsessionkey = GetCACap()->StrToHex((BYTE*)strsessionkey.c_str(), strsessionkey.size());
+		strsessionkey = CACap.StrToHex((BYTE*)strsessionkey.c_str(), strsessionkey.size());
 
 		IdKeyUnion mKeyUnion;
 		mKeyUnion.id = id;
@@ -523,7 +523,7 @@ bool CAlimCapDlg::GetLocalPwdHash()
 		mKeyUnion.PwdHash = strpwd;
 		mKeyUnion.ShareKey = strsharekey;
 		mKeyUnion.SessionKey = strsessionkey;
-		GetCACap()->mUserKeys.AddItem(mKeyUnion);
+		CACap.mUserKeys.AddItem(mKeyUnion);
 		//返回上一层
 		xml.OutOfElem();
 	}
@@ -565,8 +565,8 @@ bool CAlimCapDlg::SaveLocalPwdHash()
 	xml.IntoElem();//进入Root
 	xml.FindElem("users");
 
-	std::list<IdKeyUnion>::iterator itor = GetCACap()->mUserKeys._IdKeyUnions.begin();
-	for (; itor != GetCACap()->mUserKeys._IdKeyUnions.end(); itor++)
+	std::list<IdKeyUnion>::iterator itor = CACap.mUserKeys._IdKeyUnions.begin();
+	for (; itor != CACap.mUserKeys._IdKeyUnions.end(); itor++)
 	{
 		xml.AddChildElem("user");
 		xml.IntoElem();
@@ -575,11 +575,11 @@ bool CAlimCapDlg::SaveLocalPwdHash()
 		xml.SetAttrib("id", buf);
 		ultoa(itor->cType, buf, 10);
 		xml.SetAttrib("type", buf);
-		std::string strSTR = GetCACap()->HexToStr((BYTE*)itor->PwdHash.c_str(), itor->PwdHash.size());
+		std::string strSTR = CACap.HexToStr((BYTE*)itor->PwdHash.c_str(), itor->PwdHash.size());
 		xml.AddChildElem("pwdhash", strSTR.c_str());
-		strSTR = GetCACap()->HexToStr((BYTE*)itor->ShareKey.c_str(), itor->ShareKey.size());
+		strSTR = CACap.HexToStr((BYTE*)itor->ShareKey.c_str(), itor->ShareKey.size());
 		xml.AddChildElem("ShareKey", strSTR.c_str());
-		strSTR = GetCACap()->HexToStr((BYTE*)itor->SessionKey.c_str(), itor->SessionKey.size());
+		strSTR = CACap.HexToStr((BYTE*)itor->SessionKey.c_str(), itor->SessionKey.size());
 		xml.AddChildElem("SessionKey", strSTR.c_str());
 		xml.OutOfElem();
 	}
@@ -604,7 +604,7 @@ void CAlimCapDlg::OnBnClickedRadio(UINT idCtl)
 	if (idCtl == IDC_RADIO1)
 	{
 		//pc
-		GetCACap()->mSessions.SetClientType(Enum_PC);
+		CACap.mSessions.SetClientType(Enum_PC);
 		
 		char _column[][MAX_HEADLENGTH] = { "序号", "id","cmdid", "收发行为", "包序号" };
 		this->m_List.SetHeaders(_column, sizeof(_column) / sizeof(*_column));
@@ -616,7 +616,7 @@ void CAlimCapDlg::OnBnClickedRadio(UINT idCtl)
 	if (idCtl == IDC_RADIO2)
 	{
 		//安卓
-		GetCACap()->mSessions.SetClientType(Enum_Android);
+		CACap.mSessions.SetClientType(Enum_Android);
 
 		char _column[][MAX_HEADLENGTH] = { "序号","id","SSOVersion[1]" ,"serviceCmd", "收发行为", "包序号" };
 		this->m_List.SetHeaders(_column, sizeof(_column) / sizeof(*_column));
@@ -628,7 +628,7 @@ void CAlimCapDlg::OnBnClickedRadio(UINT idCtl)
 	if (idCtl == IDC_RADIO3)
 	{
 		//苹果
-		GetCACap()->mSessions.SetClientType(Enum_IOS);
+		CACap.mSessions.SetClientType(Enum_IOS);
 
 		char _column[][MAX_HEADLENGTH] = { "序号", "id","SSOVersion[1]" ,"serviceCmd", "收发行为", "包序号" };
 		this->m_List.SetHeaders(_column, sizeof(_column) / sizeof(*_column));
@@ -649,17 +649,17 @@ void CAlimCapDlg::OnSessionSelchange()
 	HexEditControl::SetData(mHexEditText, 0, 0);
 
 	unsigned int uuid =  cbSessions.GetItemData(cbSessions.GetCurSel());
-	const CSessionElement *pCurSession = GetCACap()->mSessions.FindSession(uuid);
+	const CSessionElement *pCurSession = CACap.mSessions.FindSession(uuid);
 	if (NULL == pCurSession)
 		return;
 
-	if (!GetCACap()->mUserKeys.isFindValid(pCurSession->pUserInfo->GetMainId().id, pCurSession->pUserInfo->GetClientType()))
+	if (!CACap.mUserKeys.isFindValid(pCurSession->pUserInfo->GetMainId().id, pCurSession->pUserInfo->GetClientType()))
 	{
 		mResult.SetWindowText(_T("无法找到密码组!"));
 		return;
 	}
 
-	std::string strHEX = GetCACap()->mUserKeys.GetItemValid(pCurSession->pUserInfo->GetMainId().id, pCurSession->pUserInfo->GetClientType())->PwdHash;
+	std::string strHEX = CACap.mUserKeys.GetItemValid(pCurSession->pUserInfo->GetMainId().id, pCurSession->pUserInfo->GetClientType())->PwdHash;
 	std::string strSTR = CAnalysisCap::HexToStr((BYTE*)strHEX.c_str(), strHEX.size());
 	this->mPassWord.SetString(strSTR.c_str(), strSTR.size());
 
@@ -685,7 +685,7 @@ void CAlimCapDlg::OnSessionSelchange()
 	{
 		int number = this->m_List.GetItemCount();
 
-		if (GetCACap()->mSessions.GetClientType() == Enum_PC)
+		if (CACap.mSessions.GetClientType() == Enum_PC)
 		{
 			char buf[0x10] = { 0 };
 			ultoa(number + 1, buf, 10);
@@ -862,64 +862,64 @@ void CAlimCapDlg::GetFilterInfo()
 		DWORD ip;
 		mFilterSrcIp.GetAddress(ip);
 		if (ip != 0){
-			GetCACap()->mSessions.mCachePackets.mFilterInfo.srcip = ip;
-			GetCACap()->mSessions.mCachePackets.mFilterInfo.isSrcIpCheck = true;
+			CACap.mSessions.mCachePackets.mFilterInfo.srcip = ip;
+			CACap.mSessions.mCachePackets.mFilterInfo.isSrcIpCheck = true;
 		}else
-			GetCACap()->mSessions.mCachePackets.mFilterInfo.isSrcIpCheck = false;
+			CACap.mSessions.mCachePackets.mFilterInfo.isSrcIpCheck = false;
 	}
 	else
-		GetCACap()->mSessions.mCachePackets.mFilterInfo.isSrcIpCheck = false;
+		CACap.mSessions.mCachePackets.mFilterInfo.isSrcIpCheck = false;
 	if (check2->GetCheck())
 	{
-		GetCACap()->mSessions.mCachePackets.mFilterInfo.isSrcPortCheck = true;
+		CACap.mSessions.mCachePackets.mFilterInfo.isSrcPortCheck = true;
 		CString strPort = "";
 		mFilterSrcPort.GetWindowText(strPort);
 		unsigned short port = StrToInt(strPort);
 		if (port != 0)
 		{
-			GetCACap()->mSessions.mCachePackets.mFilterInfo.isSrcPortCheck = true;
-			GetCACap()->mSessions.mCachePackets.mFilterInfo.srcport = port;
+			CACap.mSessions.mCachePackets.mFilterInfo.isSrcPortCheck = true;
+			CACap.mSessions.mCachePackets.mFilterInfo.srcport = port;
 		}else
-			GetCACap()->mSessions.mCachePackets.mFilterInfo.isSrcPortCheck = false;
+			CACap.mSessions.mCachePackets.mFilterInfo.isSrcPortCheck = false;
 	}
 	else
-		GetCACap()->mSessions.mCachePackets.mFilterInfo.isSrcPortCheck = false;
+		CACap.mSessions.mCachePackets.mFilterInfo.isSrcPortCheck = false;
 	if (check3->GetCheck())
 	{
-		GetCACap()->mSessions.mCachePackets.mFilterInfo.isDstIpCheck = true;
+		CACap.mSessions.mCachePackets.mFilterInfo.isDstIpCheck = true;
 		DWORD ip;
 		mFilterDstIp.GetAddress(ip);
 		if (ip != 0)
 		{
-			GetCACap()->mSessions.mCachePackets.mFilterInfo.isDstIpCheck = true;
-			GetCACap()->mSessions.mCachePackets.mFilterInfo.dstip = ip;
+			CACap.mSessions.mCachePackets.mFilterInfo.isDstIpCheck = true;
+			CACap.mSessions.mCachePackets.mFilterInfo.dstip = ip;
 		}else
-			GetCACap()->mSessions.mCachePackets.mFilterInfo.isDstIpCheck = false;
+			CACap.mSessions.mCachePackets.mFilterInfo.isDstIpCheck = false;
 	}
 	else
-		GetCACap()->mSessions.mCachePackets.mFilterInfo.isDstIpCheck = false;
+		CACap.mSessions.mCachePackets.mFilterInfo.isDstIpCheck = false;
 	if (check4->GetCheck())
 	{
-		GetCACap()->mSessions.mCachePackets.mFilterInfo.isDstPortCheck = true;
+		CACap.mSessions.mCachePackets.mFilterInfo.isDstPortCheck = true;
 		CString strPort = "";
 		mFilterDstPort.GetWindowText(strPort);
 		unsigned short port = StrToInt(strPort);
 		if (port != 0)
 		{
-			GetCACap()->mSessions.mCachePackets.mFilterInfo.isDstPortCheck = true;
-			GetCACap()->mSessions.mCachePackets.mFilterInfo.dstport = port;
+			CACap.mSessions.mCachePackets.mFilterInfo.isDstPortCheck = true;
+			CACap.mSessions.mCachePackets.mFilterInfo.dstport = port;
 		}else
-			GetCACap()->mSessions.mCachePackets.mFilterInfo.isDstPortCheck = false;
+			CACap.mSessions.mCachePackets.mFilterInfo.isDstPortCheck = false;
 	}
 	else
-		GetCACap()->mSessions.mCachePackets.mFilterInfo.isDstPortCheck = false;
+		CACap.mSessions.mCachePackets.mFilterInfo.isDstPortCheck = false;
 }
 
 //切换账号
 void CAlimCapDlg::OnCbnSelchangeCombo1()
 {
 	unsigned int uuid = cbSessions.GetItemData(cbSessions.GetCurSel());
-	const CSessionElement *pCurSession = GetCACap()->mSessions.FindSession(uuid);
+	const CSessionElement *pCurSession = CACap.mSessions.FindSession(uuid);
 	if (NULL == pCurSession)
 		return;
 

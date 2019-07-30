@@ -2,6 +2,7 @@
 #include "afxcmn.h"
 #include "afxwin.h"
 #include "tlhelp32.h"
+#include"AnalysisCap.h"
 
 
 // CScanMemKeyDialog ¶Ô»°¿ò
@@ -32,7 +33,7 @@ public:
 	CListBox mList;
 	CToolTipCtrl m_Mytip;
 public:
-	CAnalysisCap *GetCACap(){ return &(((CAlimCapApp*)AfxGetApp())->CACap); };
+	CAnalysisCap *GetCACap();
 	std::vector<PROCESSENTRY32> processlist;
 	int TestProcessList();
 	static unsigned int __stdcall ThreadFunc1(void*pArguments);

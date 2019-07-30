@@ -6,6 +6,7 @@
 #include "ScanMemKeyDialog.h"
 #include "afxdialogex.h"
 #include"mymsg.h"
+#include"AlimCapDlg.h"
 
 
 // CScanMemKeyDialog ¶Ô»°¿ò
@@ -248,4 +249,10 @@ BOOL CScanMemKeyDialog::PreTranslateMessage(MSG* pMsg)
 	if (pMsg->message == WM_MOUSEMOVE && pMsg->hwnd == GetDlgItem(IDC_LIST1)->GetSafeHwnd())
 		m_Mytip.RelayEvent(pMsg);
 	return CDialogEx::PreTranslateMessage(pMsg);
+}
+
+CAnalysisCap* CScanMemKeyDialog::GetCACap()
+{
+	CAlimCapDlg *pMainDlg = static_cast<CAlimCapDlg*>(AfxGetMainWnd());
+	return &pMainDlg->CACap;
 }

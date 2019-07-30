@@ -9,6 +9,7 @@
 #include"mymsg.h"
 #include"DialogMsg.h"
 #include"SendMsg.h"
+#include"AlimCapDlg.h"
 
 
 // CDialogSniffer ¶Ô»°¿ò
@@ -226,5 +227,12 @@ void CDialogSniffer::SetKey(CString key)
 void CDialogSniffer::SetQQ(CString qq)
 {
 	mQQctrl.SetWindowTextA(qq);
+}
+
+
+CAnalysisCap* CDialogSniffer::GetCACap()
+{
+	CAlimCapDlg *pMainDlg = static_cast<CAlimCapDlg*>(AfxGetMainWnd());
+	return &pMainDlg->CACap;
 }
 

@@ -2,6 +2,7 @@
 #include "MyListCtrl.h"
 #include "afxwin.h"
 #include <afxdialogex.h>
+#include"AnalysisCap.h"
 
 // CDialogMsg ¶Ô»°¿ò
 
@@ -37,7 +38,7 @@ public:
 public:
 	unsigned int iSel;
 public:
-	CAnalysisCap *GetCACap(){ return &(((CAlimCapApp*)AfxGetApp())->CACap); };
+	CAnalysisCap *GetCACap();
 	void SetKey(CString str){ mKey = str; };
 	void SetQQ(CString str){ mQQ = str; };
 	void SetSrcInfo(DWORD ip, CString port, CString mac){ mSrcIP = ip; mSrcMac = mac; mSrcPort = port; }

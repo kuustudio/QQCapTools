@@ -43,6 +43,7 @@ protected:
 	afx_msg HCURSOR OnQueryDragIcon();
 	DECLARE_MESSAGE_MAP()
 public:
+	CAnalysisCap CACap;
 	CMyEditBrowseCtrl mFileEditBox;
 	//cap文件选择框变量
 	CString mCapFile;
@@ -87,7 +88,6 @@ public:
 	bool GetLocalPwdHash();
 	bool SaveLocalPwdHash();
 	void GetFilterInfo();
-	CAnalysisCap* GetCACap(){ return &(((CAlimCapApp*)AfxGetApp())->CACap); };
 	afx_msg void OnCbnSelchangeCombo1();
 	afx_msg void OnBnClickedCheck5();
 };

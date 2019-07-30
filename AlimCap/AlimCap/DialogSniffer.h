@@ -3,6 +3,7 @@
 #include "MyListCtrl.h"
 #include "HexEdit.h"
 #include<afxdialogex.h>
+#include"AnalysisCap.h"
 
 
 // CDialogSniffer ¶Ô»°¿ò
@@ -36,7 +37,7 @@ public:
 	CHexEdit mHexEditTxt;
 public:
 	bool LoadAllDevs();
-	CAnalysisCap* GetCACap(){ return &(((CAlimCapApp*)AfxGetApp())->CACap); };
+	CAnalysisCap* GetCACap();
 	void SetKey(CString);
 	void SetQQ(CString);
 };

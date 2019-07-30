@@ -10,7 +10,7 @@
 #include<afxdisp.h>
 
 #include "resource.h"		// 主符号
-#include"AnalysisCap.h"
+
 
 
 // CAlimCapApp:
@@ -29,10 +29,6 @@ public:
 // 实现
 
 	DECLARE_MESSAGE_MAP()
-
-public:
-	//全局cap分析对象
-	CAnalysisCap CACap;
 };
 
 extern CAlimCapApp theApp;

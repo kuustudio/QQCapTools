@@ -974,7 +974,7 @@ bool CAnalysisCap::AnalysisMBPacket(CCachePackets &thePackets, CSessions &theSes
 			}
 		}
 	}
-
+	//按照session解析数据包
 	std::list<CSessionElement>::iterator itorsession = mSessions.mSessions.begin();
 	for (; itorsession != mSessions.mSessions.end(); itorsession++)
 	{

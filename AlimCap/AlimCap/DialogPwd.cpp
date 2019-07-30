@@ -7,6 +7,7 @@
 #include "AnalysisCap.h"
 #include "mymsg.h"
 #include"Markup.h"
+#include"AlimCapDlg.h"
 
 #define htonll(x) ((((uint64_t)htonl(x)) << 32) + htonl((x) >> 32))
 
@@ -444,4 +445,10 @@ BOOL CDialogPwd::OnCopyData(CWnd* pWnd, COPYDATASTRUCT* pCopyDataStruct)
 		}break;
 	}
 	return CDialogEx::OnCopyData(pWnd, pCopyDataStruct);
+}
+
+CAnalysisCap* CDialogPwd::GetCACap()
+{
+	CAlimCapDlg *pMainDlg = static_cast<CAlimCapDlg*>(AfxGetMainWnd());
+	return &pMainDlg->CACap;
 }
